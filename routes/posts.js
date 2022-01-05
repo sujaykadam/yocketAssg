@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
   try {
     posts = await Post.find().skip(skip).limit(limit).sort({'_id':-1})
     if (posts == null){
-      return  res.status(404).json({ message: 'Cannot find post' })
+      return  res.status(404).json({ message: 'No more posts' })
     }
   } catch (err) {
     return res.status(500).json({ message: err.message })
