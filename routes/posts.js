@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
   limit = req.query.limit
   try {
     posts = await Post.find().skip(skip).limit(limit).sort({'_id':-1})
-    if (posts == null){
+    if (posts.length === 0){
       return  res.status(404).json({ message: 'No more posts' })
     }
   } catch (err) {
